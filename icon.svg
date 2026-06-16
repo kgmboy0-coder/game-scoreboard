@@ -1,6 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#0f766e"/>
-  <rect x="96" y="118" width="320" height="276" rx="32" fill="#ffffff"/>
-  <path d="M144 190h224M144 256h224M144 322h136" stroke="#0f766e" stroke-width="34" stroke-linecap="round"/>
-  <circle cx="352" cy="322" r="28" fill="#d97706"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Game Scoreboard Icon</title>
+  <desc id="desc">A soft cream app icon with four colorful player markers around the center.</desc>
+  <defs>
+    <radialGradient id="cream" cx="50%" cy="42%" r="68%">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="0.62" stop-color="#f7eddc"/>
+      <stop offset="1" stop-color="#e8ddca"/>
+    </radialGradient>
+    <linearGradient id="red" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff5a45"/>
+      <stop offset="1" stop-color="#c82419"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#4d8fd0"/>
+      <stop offset="1" stop-color="#1f5c9a"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#6ead64"/>
+      <stop offset="1" stop-color="#347637"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffc73a"/>
+      <stop offset="1" stop-color="#e69900"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-18%" y="-18%" width="136%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#7b715e" flood-opacity="0.34"/>
+    </filter>
+    <filter id="pieceShadow" x="-35%" y="-30%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#5c4b35" flood-opacity="0.32"/>
+    </filter>
+    <filter id="innerShade">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
+      <feOffset dy="2" result="offset"/>
+      <feComposite in="offset" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="inner"/>
+      <feColorMatrix in="inner" type="matrix" values="0 0 0 0 0.35 0 0 0 0 0.22 0 0 0 0 0.12 0 0 0 0.45 0"/>
+      <feComposite in2="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect x="58" y="58" width="908" height="908" rx="176" fill="url(#cream)" filter="url(#cardShadow)"/>
+  <rect x="64" y="64" width="896" height="896" rx="170" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4"/>
+
+  <g filter="url(#pieceShadow)">
+    <g transform="translate(512 210)">
+      <circle cx="0" cy="0" r="72" fill="url(#red)" filter="url(#innerShade)"/>
+      <path d="M-98 94c22 54 70 88 98 88s76-34 98-88" fill="none" stroke="url(#red)" stroke-width="70" stroke-linecap="round" filter="url(#innerShade)"/>
+    </g>
+
+    <g transform="translate(252 512) rotate(-90)">
+      <circle cx="0" cy="0" r="72" fill="url(#blue)" filter="url(#innerShade)"/>
+      <path d="M-98 94c22 54 70 88 98 88s76-34 98-88" fill="none" stroke="url(#blue)" stroke-width="70" stroke-linecap="round" filter="url(#innerShade)"/>
+    </g>
+
+    <g transform="translate(772 512) rotate(90)">
+      <circle cx="0" cy="0" r="72" fill="url(#green)" filter="url(#innerShade)"/>
+      <path d="M-98 94c22 54 70 88 98 88s76-34 98-88" fill="none" stroke="url(#green)" stroke-width="70" stroke-linecap="round" filter="url(#innerShade)"/>
+    </g>
+
+    <g transform="translate(512 814) rotate(180)">
+      <circle cx="0" cy="0" r="72" fill="url(#yellow)" filter="url(#innerShade)"/>
+      <path d="M-98 94c22 54 70 88 98 88s76-34 98-88" fill="none" stroke="url(#yellow)" stroke-width="70" stroke-linecap="round" filter="url(#innerShade)"/>
+    </g>
+  </g>
 </svg>

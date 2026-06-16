@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "game-scoreboard-v6";
+const CACHE_NAME = "game-scoreboard-v8";
 const ASSETS = [
   "./",
   "./index.html",
