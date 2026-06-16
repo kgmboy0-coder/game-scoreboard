@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Game Score">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Game Scoreboard</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="top-standings">
+        <div class="top-standings-title">
+          <span class="eyebrow">Total Score</span>
+          <strong>누적 점수</strong>
+        </div>
+        <div id="standings" class="standings-table-wrap"></div>
+      </div>
+    </header>
+
+    <section class="main-grid">
+      <section class="panel score-entry">
+        <div class="panel-heading">
+          <div>
+            <div class="entry-title-row">
+              <h1>라운드 입력</h1>
+              <label class="point-value-label">
+                점수당 금액
+                <input id="point-value" type="number" inputmode="numeric" min="0" step="1" value="100">
+              </label>
+            </div>
+            <p>라운드 점수 합계가 0일 때만 저장됩니다.</p>
+          </div>
+          <div id="round-validity" class="validity neutral">대기</div>
+        </div>
+
+        <div class="entry-layout">
+          <div id="score-inputs" class="score-inputs"></div>
+
+          <aside class="round-options">
+            <div class="control-grid">
+              <button id="new-session-button" class="ghost-button control-cell" type="button">새 판</button>
+              <button id="export-json-button" class="ghost-button control-cell" type="button">JSON</button>
+              <button id="export-csv-button" class="ghost-button control-cell" type="button">CSV</button>
+              <label class="file-button control-cell">
+                가져오기
+                <input id="import-json-input" type="file" accept="application/json,.json">
+              </label>
+              <div class="control-cell metric-cell">
+                <span class="label">활성 인원</span>
+                <strong id="active-player-count">0</strong>
+              </div>
+              <div class="control-cell metric-cell">
+                <span class="label">라운드</span>
+                <strong id="round-count">0</strong>
+              </div>
+              <div class="control-cell metric-cell">
+                <span class="label">누적 합계</span>
+                <strong id="grand-total">0</strong>
+              </div>
+              <div id="save-status" class="control-cell metric-cell save-status">저장됨</div>
+            </div>
+            <label>
+              게임
+              <input id="game-type" type="text" list="game-type-options" autocomplete="off" value="고스톱">
+              <datalist id="game-type-options">
+                <option value="고스톱"></option>
+                <option value="포커"></option>
+                <option value="섯다"></option>
+                <option value="기타"></option>
+              </datalist>
+            </label>
+            <label>
+              메모
+              <input id="round-note" type="text" autocomplete="off" placeholder="선택 사항">
+            </label>
+            <label class="check-line">
+              <input id="auto-balance-enabled" type="checkbox" checked>
+              마지막 사람 자동 계산
+            </label>
+            <label>
+              자동 계산 대상
+              <select id="auto-balance-player"></select>
+            </label>
+          </aside>
+        </div>
+
+        <div class="round-footer">
+          <div>
+            <span class="label">현재 라운드 합계</span>
+            <strong id="round-total" class="round-total">0</strong>
+          </div>
+          <div class="round-actions">
+            <button id="clear-round-button" class="ghost-button" type="button">입력 초기화</button>
+            <button id="save-round-button" class="primary-button" type="button">라운드 저장</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading compact">
+        <div>
+          <h2>라운드 기록</h2>
+          <p>이전 라운드는 수정, 복제, 삭제할 수 있습니다.</p>
+        </div>
+        <div class="history-toolbar">
+          <button id="edit-selected-round-button" class="ghost-button small" type="button" disabled>수정</button>
+          <button id="delete-selected-rounds-button" class="ghost-button small" type="button" disabled>삭제</button>
+          <button id="duplicate-selected-round-button" class="ghost-button small" type="button" disabled>복제</button>
+        </div>
+      </div>
+      <div id="round-history" class="round-history"></div>
+    </section>
+
+    <section class="panel players-panel">
+      <div class="panel-heading compact">
+        <div>
+          <h2>참가자</h2>
+          <p>기록이 있는 사람은 삭제 대신 비활성 처리합니다.</p>
+        </div>
+        <button id="add-player-button" class="primary-button small" type="button">추가</button>
+      </div>
+      <div id="players-list" class="players-list"></div>
+    </section>
+  </main>
+
+  <template id="score-row-template">
+    <div class="score-row">
+      <div class="score-name"></div>
+      <input class="score-value" type="number" inputmode="numeric" step="1">
+      <div class="quick-buttons">
+        <button type="button" data-delta="-10">-10</button>
+        <button type="button" data-delta="-5">-5</button>
+        <button type="button" data-delta="-1">-1</button>
+        <button type="button" data-delta="1">+1</button>
+        <button type="button" data-delta="5">+5</button>
+        <button type="button" data-delta="10">+10</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

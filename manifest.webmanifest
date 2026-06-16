@@ -1,0 +1,19 @@
+{
+  "name": "Game Scoreboard",
+  "short_name": "Game Score",
+  "description": "Zero-sum score tracker for card and board games.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#0f766e",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
