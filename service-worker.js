@@ -1,12 +1,15 @@
 "use strict";
 
-const CACHE_NAME = "game-scoreboard-v8";
+const CACHE_NAME = "game-scoreboard-v9";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./manifest.webmanifest",
+  "./apple-touch-icon.png",
+  "./icon-192.png",
+  "./icon-512.png",
   "./icon.svg",
 ];
 
